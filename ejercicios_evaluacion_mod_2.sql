@@ -62,8 +62,43 @@ FROM customer c
 JOIN rental r ON c.customer_id = r.customer_id 
 GROUP BY c.customer_id;
 
+/* Encuentra la cantidad total de películas alquiladas por categoría y
+muestra el nombre de la categoría junto con el recuento de alquileres. */
 
+SELECT c.name, COUNT(r.rental_id) AS total_pelis_alquiladas
+FROM category c
+INNER JOIN film_category fc ON c.category_id = fc.category_id
+INNER JOIN inventory i ON fc.film_id = i.film_id 
+INNER JOIN rental r ON i.inventory_id = r.inventory_id 
+GROUP BY c.name;
 
+/* 12. Encuentra el promedio de duración de las películas para cada clasificación de la tabla film y
+muestra la clasificación junto con el promedio de duración. */
+
+SELECT rating, AVG(length) AS duracion_pelis
+FROM film
+GROUP BY rating;
+
+-- 13. Encuentra el nombre y apellido de los actores que aparecen en la película con title "Indian Love".
+
+SELECT first_name, last_name
+FROM actor a
+JOIN film_actor fa ON a.actor_id = fa.actor_id
+JOIN film f ON fa.film_id = f.film_id 
+WHERE f.title = "Indian Love";
+
+-- 14. Muestra el título de todas las películas que contengan la palabra "dog" o "cat" en su descripción.
+
+SELECT title, description
+FROM film
+WHERE description REGEXP 'dog|cat';
+
+-- 15. Hay algún actor o actriz que no aparezca en ninguna película en la tabla film_actor.
+
+SELECT a.first_name, a.last_name
+FROM actor a
+LEFT JOIN film_actor fa ON a.actor_id= fa.actor_id
+WHERE fa.film_id IS NULL;
 
 
 
