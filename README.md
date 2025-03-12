@@ -24,10 +24,8 @@ WHERE release_year BETWEEN 2005 AND 2010;
 
 Resultado SQL:
 
-title               year
-ACADEMY DINOSAUR	2006
-ACE GOLDFINGER	    2006
-ADAPTATION HOLES	2006
+<img src="ejemplo_bbdd_sakila1.JPG" width="300">
+
 
 Nombre y apellido de los actores que aparecen en más de 10 películas.
 
@@ -40,8 +38,5 @@ HAVING COUNT(fa.film_id) > 10;
 ~~~
 
 Resultado SQL:
-first_name      last_name       total_pelis
-PENELOPE	    GUINESS	        19
-NICK	        WAHLBERG	    25
-ED	            CHASE	        22
-JENNIFER	    DAVIS	        22
+
+<img src="ejemplo_bbdd_sakila2.JPG" width="300">
